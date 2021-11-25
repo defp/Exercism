@@ -5,3 +5,4 @@ build
 *.bat
 *.properties
 gradlew
+node_modules
