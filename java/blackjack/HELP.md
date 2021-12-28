@@ -112,7 +112,7 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
 
 ## Submitting your solution
 
-You can submit your solution using the `exercism submit src/main/java/AnnalynsInfiltration.java` command.
+You can submit your solution using the `exercism submit src/main/java/Blackjack.java` command.
 This command will upload your solution to the Exercism website and print the solution page's URL.
 
 It's possible to submit an incomplete solution which allows you to:
