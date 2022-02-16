@@ -6,3 +6,5 @@ build
 *.properties
 gradlew
 node_modules
+*.beam
+_build
