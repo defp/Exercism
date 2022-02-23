@@ -13,11 +13,10 @@ var planets = map[Planet]float64{
 	"Neptune": 31557600 * 164.79132,
 }
 
-
 func Age(seconds float64, planet Planet) float64 {
-  	period, ok := planets[planet]
-        if (ok) {
-          return seconds / period
-        }
-        return 0
+	period, ok := planets[planet]
+	if ok {
+		return seconds / period
+	}
+	return 0
 }
