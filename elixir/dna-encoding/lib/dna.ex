@@ -30,9 +30,27 @@ defmodule DNA do
     end
   end
 
-  def encode([]), do: <<>>
-  def encode([head | tail]), do: <<encode_nucleotide(head)::4, encode(tail)::bitstring>>
+  def encode(dna) do
+    do_encode(dna, <<>>)
+  end
 
-  def decode(<<>>), do: []
-  def decode(<<head::4, tail::bitstring>>), do: [decode_nucleotide(head) | decode(tail)]
+  defp do_encode([], acc) do
+    acc
+  end
+
+  defp do_encode([head | tail], acc) do
+    do_encode(tail, <<acc::bitstring, encode_nucleotide(head)::4>>)
+  end
+
+  def decode(dna) do
+    do_decode(dna, [])
+  end
+
+  defp do_decode(<<>>, acc) do
+    acc
+  end
+
+  defp do_decode(<<head::4, tail::bitstring>>, acc) do
+    do_decode(tail, acc ++ [decode_nucleotide(head)])
+  end
 end
