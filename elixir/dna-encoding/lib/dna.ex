@@ -1,17 +1,38 @@
 defmodule DNA do
+  @spec encode_nucleotide(32 | 65 | 67 | 71 | 84) :: 0 | 1 | 2 | 4 | 8
   def encode_nucleotide(code_point) do
-    # Please implement the encode_nucleotide/1 function
+    case code_point do
+      ?A ->
+        0b0001
+      ?C ->
+        0b0010
+      ?G ->
+        0b0100
+      ?T ->
+        0b1000
+      ?\s ->
+        0b0000
+    end
   end
 
   def decode_nucleotide(encoded_code) do
-    # Please implement the decode_nucleotide/1 function
+    case encoded_code do
+      0b0001 ->
+        ?A
+      0b0010 ->
+        ?C
+      0b0100 ->
+        ?G
+      0b1000 ->
+        ?T
+      0b0000 ->
+        ?\s
+    end
   end
 
-  def encode(dna) do
-    # Please implement the encode/1 function
-  end
+  def encode([]), do: <<>>
+  def encode([head | tail]), do: <<encode_nucleotide(head)::4, encode(tail)::bitstring>>
 
-  def decode(dna) do
-    # Please implement the decode/1 function
-  end
+  def decode(<<>>), do: []
+  def decode(<<head::4, tail::bitstring>>), do: [decode_nucleotide(head) | decode(tail)]
 end
